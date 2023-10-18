@@ -5,8 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>you-tvideo</title>
-  <link rel="stylesheet" href="./css/normalize.css">
-  <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
   <header class="header">
@@ -22,20 +20,6 @@
   </header>
 
   <main>
-    <section class="hero">
-       <div class="container hero__container">
-        <a href="/favorite.html" class="hero__link">Избранное</a>
-        <svg class="hero__logo" viewBox="0 0 360 48" role="img" arial-label="Логотип сервиса You-Tvideo"> 
-          <use xlink:href="./image/sprite.svg#logo-white"></use>
-        </svg>
-
-        <h1 class="hero__title">Смотри. Загружай. Создавай </h1>
-
-        <p class="hero_tagline">Удобный видеохостинг для тебя</p>
-
-       </div>
-    </section>
-
     <section class="search">
       <form class="saerch__form">
         <label class="search__label">
@@ -45,9 +29,28 @@
       </form>
     </section>
 
+    <section class="video">
+      <iframe class="video__iframe" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+      </iframe>
+      <h1 class="video__title">Философия идущего к реке</h1>
+
+      <p class="video__channel">Правое полушарие интроверта</p>
+
+      <p class="video__data">1 575 581 просмотр Дата премьеры: 16 авг. 2024 г.</p>
+
+      <p class="video__description">Смотрите наш курс-саммари «Как понимать философию» фоном.</p>
+
+      <div class="video__noticed">
+        В избранном
+        <svg id="star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M11.4417 2.925L12.9083 5.85833C13.1083 6.26666 13.6417 6.65833 14.0917 6.73333L16.75 7.175C18.45 7.45833 18.85 8.69166 17.625 9.90833L15.5583 11.975C15.2083 12.325 15.0167 13 15.125 13.4833L15.7167 16.0417C16.1833 18.0667 15.1083 18.85 13.3167 17.7917L10.825 16.3167C10.375 16.05 9.63332 16.05 9.17499 16.3167L6.68332 17.7917C4.89999 18.85 3.81665 18.0583 4.28332 16.0417L4.87499 13.4833C4.98332 13 4.79165 12.325 4.44165 11.975L2.37499 9.90833C1.15832 8.69166 1.54999 7.45833 3.24999 7.175L5.90832 6.73333C6.34999 6.65833 6.88332 6.26666 7.08332 5.85833L8.54999 2.925C9.34999 1.33333 10.65 1.33333 11.4417 2.925Z" fill="#FB6231" stroke="#151515" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </section>
+
     <section class="video-list">
       <div class="container">
-        <h2 class="video-list__title">В тренде</h2>
+        <h2 class="video-list__title">Похожие видео</h2>
 
         <ul class="video-list__items">
           <li class="video-list__item">
