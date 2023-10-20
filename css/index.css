@@ -7,7 +7,7 @@
 @font-face {
   font-family: Inter;
   src: url('../fonts/inter-v13-cyrillic_latin-900.woff2');
-  font-weight: 400;
+  font-weight: 900;
 }
 
 html {
@@ -36,6 +36,7 @@ body {
   color: #292D32;
   background-color: #fff;
   line-height: 1.2;
+  letter-spacing: 0.02em;
 }
 
 
@@ -91,18 +92,281 @@ iframe {
   transform: scale(0);
 }
 
-
-/*
-Пример контейнера
-
-Если контейнер 1180px по макету,
-то для max-width прибавляем паддинги 30px*2, 
-в итоге 1240px
-Чтобы контент не прижимался к краям экрана
-*/
-
 .container {
   max-width: 1260px;
-  padding: 0 30px;
+  padding: 0 0px;
   margin: 0 auto;
 }
+
+/* header */
+
+.header {
+  padding: 32px 0 24px;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__link {
+
+}
+
+.header__logo {
+  width: 240px;
+}
+
+.header__link_favorite {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+}
+
+.header__icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* hero */
+
+.hero {
+  padding: 60px 0 80px;
+  background: #FF6A00 url(../image/bg.jpg) center/cover;
+  color:#fff; 
+  margin-bottom: 32px; 
+}
+
+.hero__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero__link {
+  position: absolute;
+  top: -36px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  letter-spacing: 0.02em ;
+}
+
+.hero__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.hero__logo {
+  width: 240px;
+  margin-bottom: 80px;
+}
+
+.hero__title {
+  font-size: 70px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  margin-bottom: 40px;
+}
+
+.hero_tagline {
+  font-size: 20px;
+  letter-spacing: 0.2em;
+}
+
+/* search */
+
+.search__form {
+  width: 100%;
+  position: relative;
+}
+
+.search__input {
+  width: 100%;
+  border-radius: 40px;
+  border: 1px solid #FB9953;
+  padding: 10px 124px 10px 24px;
+  outline: none;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+}
+
+.search__btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  border-radius: 40px;
+  background: #FF6A00;
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+}
+
+.search__icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* video-list */
+
+.video-list {
+  padding: 80px 0;
+}
+
+.video-list__title {
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  margin-bottom: 40px;
+}
+
+.video-list__items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px, 12px;
+}
+
+.video-card {
+  position: relative;
+}
+
+.video-card__thumbnail {
+  border-radius: 16px;
+  margin-bottom: 12px;
+}
+
+.video-card__title {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+}
+
+.video-card__channel {
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+}
+
+.video-card__duration {
+  font-size: 16px;
+  letter-spacing: 0.02em;
+}
+
+.video-card__favorite {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.video-card__favorite .star {
+  display: none;
+}
+
+.video-card__favorite_active .star {
+  display: block;
+}
+
+.video-card__icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* video */
+
+.video {
+  padding-top: 80px;
+}
+
+.video__player {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.video__iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+}
+
+.video__container {
+  display: flex;
+  justify-content: space-between;
+  gap: 84px;
+}
+
+.video__content {
+
+}
+
+
+.video__title {
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 120%; 
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+}
+
+.video__channel {
+  font-size: 24px;
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+}
+
+.video__info {
+  font-size: 24px;
+  letter-spacing: 0.02em;
+}
+
+.video__description {
+  font-size: 24px;
+  letter-spacing: 0.02em;
+}
+
+.video__link {
+  width: max-content;
+  white-space: nowrap;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.video__link .video__no-favorite {
+  display: block;
+}
+
+.video__link .video__favorite {
+  display: none;
+}
+
+.video__link_active .video__no-favorite {
+  display: none;
+}
+
+.video__link_active .video__favorite {
+  display: block;
+}
+
+.video__icon {
+  width: 20px;
+  height: 20px;
+}
+
+
