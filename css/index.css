@@ -402,6 +402,38 @@ iframe {
   justify-content: space-between;
 }
 
+.footer__link:hover {
+  color: #ccc;
+}
+
+.footer__link-logo {
+
+}
+
+.footer__logo {
+
+}
+
+.footer__info {
+
+}
+
+.footer__developers {
+
+}
+
+.footer__developers-item {
+
+}
+
+.footer__link-developers {
+
+}
+
+.footer__copyright {
+
+}
+
 .footer__logo {
   width: 360px;
   height: 48px;
