@@ -8,7 +8,25 @@ const SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search'
 const videoListItems = document.querySelector('.video-list__items');
 
 const fixToCorrectTime = (badTime) => {
+  console.log(badTime.slice(2).split(''));
+  let time = ''
+
+  let arrTime = badTime.slice(2).split('')
+
+  arrTime.forEach(item => {
+    if(parseInt(item)) {
+      time += item
+    } else if (item == 'H') {
+      time += 'ч. '
+    } else if (item == 'M') {
+      time += 'м. '
+    } else if (item == 'S') {
+      time += 'c. '
+    }
+  });
   
+  console.log(time);
+  return time
 };
 
 const fetchTrendingVideos = async () => {
@@ -36,6 +54,8 @@ const displayVideo = (videos) => {
   videoListItems.textContent = ''
 
   const listVideos = videos.items.map(video => {
+
+    fixToCorrectTime(video.contentDetails.duration)
     const li = document.createElement('li')
     li.classList.add('video-list__item')
     console.log('viseo:', video);
@@ -48,7 +68,7 @@ const displayVideo = (videos) => {
 
         <p class="video-card__channel">${video.snippet.channelTitle}</p>
 
-        <p class="video-card__duration">${video.contentDetails.duration}</p>
+        <p class="video-card__duration">${fixToCorrectTime(video.contentDetails.duration)}</p>
       </a>
       <button class="video-card__favorite" type="button" aria-label="Добавить в избранное, Филисофия Идущего к реке">
         <svg class="video-card__icon"> 
