@@ -7,26 +7,49 @@ const SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search'
 
 const videoListItems = document.querySelector('.video-list__items');
 
-const fixToCorrectTime = (badTime) => {
-  console.log(badTime.slice(2).split(''));
-  let time = ''
+const fixToCorrectTime = (isoDuration) => {
+  // let time = ''
 
-  let arrTime = badTime.slice(2).split('')
+  // let arrTime = badTime.slice(2).split('')
 
-  arrTime.forEach(item => {
-    if(parseInt(item)) {
-      time += item
-    } else if (item == 'H') {
-      time += 'ч. '
-    } else if (item == 'M') {
-      time += 'м. '
-    } else if (item == 'S') {
-      time += 'c. '
-    }
-  });
+  // arrTime.forEach(item => {
+  //   if(parseInt(item)) {
+  //     time += item
+  //   } else if (item == 'H') {
+  //     time += 'ч. '
+  //   } else if (item == 'M') {
+  //     time += 'м. '
+  //   } else if (item == 'S') {
+  //     time += 'c. '
+  //   }
+  // });
   
-  console.log(time);
-  return time
+  // console.log(time);
+  // return time
+
+  const hoursMatch = isoDuration.match(/(\d+)H/)
+  const minutesMatch = isoDuration.match(/(\d+)M/)
+  const secondsMatch = isoDuration.match(/(\d+)S/)
+
+  const hours = hoursMatch ? parseInt(hoursMatch[1]) : 0
+  const minutes = minutesMatch ? parseInt(minutesMatch[1]) : 0
+  const seconds = secondsMatch ? parseInt(secondsMatch[1]) : 0
+
+  let res = ''
+
+  if (hours > 0) {
+    res += `${hours} ч `
+  }
+
+  if (minutes > 0) {
+    res += `${minutes} мин `
+  }
+
+  if (seconds > 0) {
+    res += `${seconds} сек`
+  }
+
+  return res.trim()
 };
 
 const fetchTrendingVideos = async () => {
