@@ -5,28 +5,11 @@ const API_KEY = 'AIzaSyDAwJrvaHGHQY3MA8a46MbjP9uIB0_oPC4'
 const VIDEOS_URL = 'https://www.googleapis.com/youtube/v3/videos'
 const SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search'
 
+const favoriteIds = JSON.parse(localStorage.getItem('favoriteYT') || '[]');
+console.log(favoriteIds);
 const videoListItems = document.querySelector('.video-list__items');
 
 const fixToCorrectTime = (isoDuration) => {
-  // let time = ''
-
-  // let arrTime = badTime.slice(2).split('')
-
-  // arrTime.forEach(item => {
-  //   if(parseInt(item)) {
-  //     time += item
-  //   } else if (item == 'H') {
-  //     time += 'ч. '
-  //   } else if (item == 'M') {
-  //     time += 'м. '
-  //   } else if (item == 'S') {
-  //     time += 'c. '
-  //   }
-  // });
-  
-  // console.log(time);
-  // return time
-
   const hoursMatch = isoDuration.match(/(\d+)H/)
   const minutesMatch = isoDuration.match(/(\d+)M/)
   const secondsMatch = isoDuration.match(/(\d+)S/)
@@ -77,11 +60,8 @@ const displayVideo = (videos) => {
   videoListItems.textContent = ''
 
   const listVideos = videos.items.map(video => {
-
-    fixToCorrectTime(video.contentDetails.duration)
     const li = document.createElement('li')
     li.classList.add('video-list__item')
-    console.log('viseo:', video);
     li.innerHTML = `
     <article class="video-card">
       <a href="/video.html?id=${video.id}" class="video-card__link">
@@ -93,7 +73,7 @@ const displayVideo = (videos) => {
 
         <p class="video-card__duration">${fixToCorrectTime(video.contentDetails.duration)}</p>
       </a>
-      <button class="video-card__favorite" type="button" aria-label="Добавить в избранное, Филисофия Идущего к реке">
+      <button class="video-card__favorite favorite" type="button" aria-label="Добавить в избранное, ${video.snippet.title}" data-video-id="${video.id}">
         <svg class="video-card__icon"> 
           <use class="star-o" xlink:href="./image/sprite.svg#star-ob"></use>
           <use class="star" xlink:href="./image/sprite.svg#star"></use>
@@ -108,7 +88,29 @@ const displayVideo = (videos) => {
   videoListItems.append(...listVideos)
 };
 
-fetchTrendingVideos().then(displayVideo)
+const init = () => {
+  fetchTrendingVideos().then(displayVideo)
+
+  document.body.addEventListener('click', ({target}) => {
+    const itemFavorite = target.closest('.favorite')
+
+    if (itemFavorite) {
+      const videoId = itemFavorite.dataset.videoId;
+
+      if (favoriteIds.includes(videoId)) {
+        
+      } else {
+        favoriteIds.push(videoId)
+        localStorage.setItem('favoriteYT', JSON.stringify(favoriteIds))
+        itemFavorite.classList.add('active')
+      }
+    }
+  })
+  
+};
+
+init()
+
 
 
 
